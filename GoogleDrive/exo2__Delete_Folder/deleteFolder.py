@@ -9,7 +9,6 @@ from googleapiclient.discovery import build
 ## https://drive.google.com/drive/folders/1KQo48aNWOQoEPltGpZ1EDR5Dl696MpxB
 ## ID = 1KQo48aNWOQoEPltGpZ1EDR5Dl696MpxB
 
-folderName = sys.argv[1]
-drive_service = build('drive', 'v3', credentials=getCred())
-
-drive_service.files().delete(fileId=folderName).execute()
+def deleteFolder(folderName) :
+    drive_service = build('drive', 'v3', credentials=getCred())
+    drive_service.files().delete(fileId=folderName).execute()

@@ -6,11 +6,11 @@ import getCoords as co
 apiKey = "AIzaSyDKlQi_AxBDLHbUr6fB3Din_5RjLF2LP_w"
 
 def getPlace(style, coords) :
-    fileName = style + "(" + coords + ").json"
+    fileName = style + "(" + coords + ")"
     gmaps = googlemaps.Client(key=apiKey)
     print ("Extract all the place (style : '" + style + "') arround : '" + coords + "'")
-    jsonSave = open(fileName, "w")
+    jsonSave = open(fileName + ".json", "w")
     print ("file : '"+ fileName + "'")
-    results = gmaps.places(style, location = co.getCoords(coords), language = 'fr')
+    results = gmaps.places(style, location = co.getCoords(coords), language = 'fr', radius=1)
     jsonSave.write (json.dumps(results, indent = 4, ensure_ascii = False))
     return (fileName)

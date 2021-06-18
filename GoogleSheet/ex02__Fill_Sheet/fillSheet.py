@@ -8,7 +8,7 @@ from createSheet import createSheet
 from googleapiclient.discovery import build
 
 def initSheet(sheet) :
-    sheet.insert_row(["NOM DU RESTAURANT", "ADDRESSE", "OUVERT ?", "PHOTO", "NOTE"], 1)
+    sheet.insert_row(["NOM DU RESTAURANT", "ADDRESSE", "OUVERT ?", "NOTE"], 1)
 
 def fillWithData(resto, sheet) :
     name = resto["name"]
@@ -16,20 +16,18 @@ def fillWithData(resto, sheet) :
     try :
         ouvert = str(resto["opening_hours"]["open_now"])
     except KeyError:
-        ouvert = ""
+        ouvert = "N/A"
     try :
-        photo = resto["photos"][0]["html_attributions"][0]
+        note = str(resto["rating"]) + "/5"
     except KeyError:
-        photo = ""
-    note = str(resto["rating"]) + "/5"
+        note = "N/A"
 
     sheet.insert_row([name, address,
-                    ouvert, photo,
-                    note], 2)
+                    ouvert, note], 2)
 
 def fillSheet(style, address) :
     fileName = getPlace(style, address)
-    jsonFile = open(fileName, "r")
+    jsonFile = open(fileName + ".json", "r")
     jsonFile = json.loads(jsonFile.read())
     createSheet(fileName)
     client = gspread.authorize(getCred())
@@ -38,6 +36,5 @@ def fillSheet(style, address) :
     initSheet(sheet)
     for address in jsonFile["results"]:
         fillWithData(address, sheet)
-    # print (json.dumps(jsonFile["results"], indent = 4))
 
 fillSheet(sys.argv[1], sys.argv[2])
