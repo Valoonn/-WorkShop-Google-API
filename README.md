@@ -9,7 +9,7 @@
     c/ Activer les API suivante :
         - Google Sheets API
         - Gmail API
-        - Geolocation APi
+        - Geocoding API
         - Places API
         - Google Drive API
 

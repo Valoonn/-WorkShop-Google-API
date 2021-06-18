@@ -2,6 +2,7 @@ from apiclient import errors
 import sys
 sys.path.insert(1, '../../GoogleDrive')
 from getCreds import getCred
+from googleapiclient.discovery import build
 
 ## Le nom du fichier est l'id que l'on trouve dans l'URL sur google drive
 
@@ -9,6 +10,6 @@ from getCreds import getCred
 ## ID = 1KQo48aNWOQoEPltGpZ1EDR5Dl696MpxB
 
 folderName = sys.argv[1]
-drive_service = getCred()
+drive_service = build('drive', 'v3', credentials=getCred())
 
 drive_service.files().delete(fileId=folderName).execute()

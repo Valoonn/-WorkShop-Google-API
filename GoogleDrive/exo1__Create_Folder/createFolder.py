@@ -1,10 +1,11 @@
 import sys
 sys.path.insert(1, '../../GoogleDrive')
 from getCreds import getCred
+from googleapiclient.discovery import build
 
 folderName = sys.argv[1]
 
-drive_service = getCred()
+drive_service = build('drive', 'v3', credentials=getCred())
 
 file_metadata = {
     'name': folderName,
