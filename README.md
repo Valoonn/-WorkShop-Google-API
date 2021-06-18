@@ -22,7 +22,7 @@
         - Telecharger le fichier .json en cliquant sur le bouton téléchargé dans la categories "ID clients OAuth 2.0"
         - renomer ce fichier en "credentials.json" et placer le a la base du repo
     e/
-        entrer la commande suivante : "pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib"
+        entrer la commande suivante : "pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib gspread"
 
 2/ Lancer un programme
 
