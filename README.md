@@ -24,8 +24,7 @@
     e/
         entrer la commande suivante : "pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib gspread googlemaps"
 
-2/ Lancer un programme
-
+2/ Exercices
     A partir des 3 libs importé dans main.py : Google Drive / Google Sheet / Google Maps vous devez :
 
     - creer un dossier sur GoogleDrive
