@@ -4,6 +4,14 @@ from apiclient import errors
 from lib import getCreds
 from apiclient.http import MediaFileUpload
 
+
+################## uploadFile(filePath) ####################
+# argv :
+#   filePath : le path du fichier que vous voulez upload
+# return :
+#   L'ID du fichier créer
+############################################################
+
 def uploadFile(filePath) :
     drive_service = build('drive', 'v3', credentials=getCreds.getCred())
 
@@ -14,6 +22,18 @@ def uploadFile(filePath) :
                                         fields='id').execute()
     print ('Successfully created file ID: "%s", name : "%s"' % (file.get('id'), filePath))
     return (file.get('id'))
+
+
+
+
+
+################## createFolder(folderName) ####################
+# argv :
+#   folderName : le nom du dossier que vous voulez creer
+# return :
+#   L'ID du dossier créer
+################################################################
+
 
 def createFolder(folderName) :
 
@@ -29,6 +49,16 @@ def createFolder(folderName) :
     print ('Successfully created folder ID: "%s", name : "%s"' % (folder.get('id'), folderName))
     return (folder.get('id'))
 
+
+
+
+
+################## deleteFolder(folderName) ####################
+# argv :
+#   folderName : le nom du dossier que vous voulez supprimer
+# return :
+#   void
+################################################################
 
 def deleteFolder(folderName) :
 

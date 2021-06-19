@@ -20,10 +20,19 @@
         - Nom : laisser par defaut
         - Créer
         - Telecharger le fichier .json en cliquant sur le bouton téléchargé dans la categories "ID clients OAuth 2.0"
-        - renomer ce fichier en "credentials.json" et placer le a la base du repo
+        - renomer ce fichier en "credentials.json" et placer le dossier credentials
     e/
-        entrer la commande suivante : "pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib gspread"
+        entrer la commande suivante : "pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib gspread googlemaps"
 
 2/ Lancer un programme
 
-    Toujours lancer les programmes quand vous etes dans le fichier de ce dernier
+    A partir des 3 libs importé dans main.py : Google Drive / Google Sheet / Google Maps vous devez :
+
+    - creer un dossier sur GoogleDrive
+    - upload un fichier sur GoogleDrive
+    - suprimer un dossier sur GoogleDrive
+    - creer un SpreadSheet dans un dossier "Workshop"
+    - remplir un SpreadSheet
+    - recuperer des coordonées les fonction de GoogleMaps
+    - recuperer les infos des lieux à proximité avec les coordonnées
+    - remplir le sheet avec les infos sur les lieux
