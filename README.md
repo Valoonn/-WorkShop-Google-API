@@ -7,7 +7,7 @@ Dans ce workshop vous apprenderez à utiliser à 100% les API de google, grâce 
 ## Step 0: Initialisation
 
 - `A/ Création d'un compte Google Cloud Platform :`
-  
+
   https://console.cloud.google.com/
 
 

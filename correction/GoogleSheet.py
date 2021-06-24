@@ -21,15 +21,17 @@ def createSheet(fileName, folderId = '') :
 
     drive_service = build('sheets', 'v4', credentials=getCreds.getCred())
 
-    ## Creer ici le sheet
-
+    spreadsheet = {
+        'properties': {
+            'title': fileName,
+        }
+    }
+    results = drive_service.spreadsheets().create(body=spreadsheet,
+                                    fields='spreadsheetId').execute()
+    print ('Successfully created Spreadsheet ID: "%s", name : "%s"' % (results.get('spreadsheetId'), fileName))
 
     drive = build('drive', 'v3', credentials=getCreds.getCred())
-
-
-    ## Deplacer le sheet dans le dossier
-
-
+    res = drive.files().update(fileId=results['spreadsheetId'], addParents=folderId, removeParents='root').execute()
     return (fileName)
 
 
@@ -65,6 +67,9 @@ def fillWithData(info, sheet) :
     except KeyError:
         note = "N/A"
 
+    sheet.insert_row([name, address,
+                    ouvert, note], 2)
+
 
 ################## openSheet(fileName) ##########################
 # argv :
@@ -75,7 +80,7 @@ def fillWithData(info, sheet) :
 
 def openSheet(fileName) :
     client = gspread.authorize(getCreds.getCred())
-
-
+    sheet = client.open(fileName).sheet1
+    sheet.clear()
     initSheet(sheet)
-
+    return (sheet)
